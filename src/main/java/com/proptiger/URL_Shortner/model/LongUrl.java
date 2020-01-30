@@ -15,7 +15,7 @@ public class LongUrl {
 	@Column(name = "id")
 	long id;
 	
-	@Column(name = "long_url")
+	@Column(name = "long_url", unique = true, nullable = false  )
 	String longUrl;
 
 	public long getId() {
@@ -33,7 +33,7 @@ public class LongUrl {
 	public void setLongUrl(String longUrl) {
 		this.longUrl = longUrl;
 	}
-	
+
 	
 	
 }

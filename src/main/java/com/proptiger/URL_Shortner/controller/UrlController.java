@@ -26,7 +26,7 @@ public class UrlController {
 
 	@RequestMapping(value = "url/", method = RequestMethod.POST)
 	@ResponseBody
-	public ShortUrl createUrl(@RequestBody LongUrl Url) {
+	public String createUrl(@RequestBody LongUrl Url) {
 		return urlService.createLongUrl(Url);
 	}
 

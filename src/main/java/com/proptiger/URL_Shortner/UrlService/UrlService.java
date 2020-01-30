@@ -21,20 +21,36 @@ public class UrlService {
 	
 	private IDConverter Id = new IDConverter();
 
-	public ShortUrl createLongUrl(LongUrl longUrl) {
-	//	System.out.println(longUrl.getLongUrl());
+	public String createLongUrl(LongUrl longUrl) {
 		
-		longUrl = longUrlDao.save(longUrl);
-		//	System.out.println(longUrl.getLongUrl());
-		ShortUrl shortUrl = new ShortUrl();
-		shortUrl.setShortUrl(Id.createID(longUrl.getId()));
-		shortUrl.setLongUrl(longUrl);
-		return shortUrlDao.save(shortUrl);
+		LongUrl longUrlPresent	= longUrlDao.findByLongUrl(longUrl.getLongUrl());
+		
+		if(longUrlPresent!=null) {
+			return shortUrlDao.findByLongUrl(longUrlPresent).getShortUrl();
+		}
+		/*
+		 * if(shortUrlDao.findByLongUrl(longUrl.getLongUrl())!=null) { return
+		 * shortUrlDao.findByLongUrl(longUrl.getLongUrl()).getShortUrl(); }// //
+		 * System.out.println("c");
+		 */
+		
+	else {	 
+	
+			
+				longUrl = longUrlDao.save(longUrl);
+					//System.out.println(longUrl.getLongUrl());
+				ShortUrl shortUrl = new ShortUrl();
+				StringBuilder urlCreated = new StringBuilder(Id.createID(longUrl.getId()));
+				shortUrl.setShortUrl(urlCreated.toString());
+				shortUrl.setLongUrl(longUrl);
+				shortUrlDao.save(shortUrl);
+				return  urlCreated.toString();
 	}
-
+	}
+	
 	public String getLongUrl(String shortUrl) {
-		long id = Id.getID(shortUrl);
-		LongUrl longUrl = longUrlDao.findOne(id);
+		 ShortUrl shortUrlObject = shortUrlDao.findByShortUrl(shortUrl);
+		LongUrl longUrl = shortUrlObject.getLongUrl();
 		return longUrl.getLongUrl();
 	}
 

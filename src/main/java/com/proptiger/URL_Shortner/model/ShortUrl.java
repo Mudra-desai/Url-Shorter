@@ -25,17 +25,16 @@ public class ShortUrl {
 	String shortUrl;
 	
 
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToOne(cascade= CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name = "Long_Url_Id")
 	LongUrl longUrl;
-
 
 	public long getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -45,19 +44,25 @@ public class ShortUrl {
 	}
 
 
-	public void setShortUrl(String shortUrl) {
-		this.shortUrl = shortUrl;
-	}
-
-
-	public LongUrl getLongUrl() {
-		return longUrl;
-	}
-
 
 	public void setLongUrl(LongUrl longUrl) {
 		this.longUrl = longUrl;
 	}
+
+
+	public void setShortUrl(String string) {
+		// TODO Auto-g
+		this.shortUrl = string;
+	}
+
+
+	public LongUrl getLongUrl() {
+		// TODO Auto-generated method stub
+		return this.longUrl;
+	}
+	
+
+
 
 
 	
