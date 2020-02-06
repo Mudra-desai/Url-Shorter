@@ -1,17 +1,18 @@
-package com.proptiger.URL_Shortner.dao;
+package com.proptiger.urlshortner.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.proptiger.URL_Shortner.model.LongUrl;
-import com.proptiger.URL_Shortner.model.ShortUrl;
+import com.proptiger.urlshortner.model.ShortUrl;
 
 public interface ShortUrlDao extends JpaRepository<ShortUrl, Long> {
 	
-//	@Query("select S from ShortUrl S join fetch S.longUrl L where L.longUrl= ?1")
-	public ShortUrl findByLongUrl(LongUrl longUrl);
+
 
 	public ShortUrl findByShortUrl(String shortUrl);
+
+	@Query(value = "select short_url from url.short_url where long_url_id=?1", nativeQuery = true)
+	public String findLongUrlId(long id);
 	
 //	long findById(LongUrl longUrl);
 }

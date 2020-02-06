@@ -1,4 +1,4 @@
-package com.proptiger.URL_Shortner.model;
+package com.proptiger.urlshortner.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Short_Url", schema = "Url")
+@Table(name = "short_url", schema = "url")
 
 public class ShortUrl {
 
@@ -26,7 +26,7 @@ public class ShortUrl {
 	
 
 	@OneToOne(cascade= CascadeType.ALL,fetch = FetchType.EAGER)
-	@JoinColumn(name = "Long_Url_Id")
+	@JoinColumn(name = "long_url_id")
 	LongUrl longUrl;
 
 	public long getId() {

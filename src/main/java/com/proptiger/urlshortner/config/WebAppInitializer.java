@@ -1,4 +1,4 @@
-package com.proptiger.URL_Shortner.config;
+package com.proptiger.urlshortner.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

@@ -1,4 +1,4 @@
-package com.proptiger.URL_Shortner.config;
+package com.proptiger.urlshortner.config;
 
 import java.util.Properties;
 
