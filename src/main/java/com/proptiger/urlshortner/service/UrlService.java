@@ -54,9 +54,6 @@ public class UrlService {
 			hashObject = hashDao.save(hashObject);
 		}
 		
-		
-		
-		
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		Date currentDate = formatter.parse(formatter.format(new Date()));
 		longUrl.setDate(currentDate);
@@ -74,13 +71,15 @@ public class UrlService {
 	public String getLongUrl(String shortUrl) {
 
 		ShortUrl shortUrlObject = shortUrlDao.findByShortUrl(shortUrl);
-		if (shortUrlObject == null) {
+		if (shortUrlObject == null || !shortUrlObject.getShortUrl().contentEquals(shortUrl)) {
 			return "Client Input Error";
 		} else {
+			
 			LongUrl longUrl = shortUrlObject.getLongUrl();
 			return longUrl.getLongUrl();
 		}
 	}
+	
 	@Cacheable(value = "date")
 	public int getCountOfUrlCreated(String startDate, String endDate) throws Exception {
 		Date startDateFormat = new SimpleDateFormat("dd/MM/yyyy").parse(startDate);
