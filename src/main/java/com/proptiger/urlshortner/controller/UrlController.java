@@ -28,15 +28,15 @@ public class UrlController {
 		return new ApiWrapper("Pong");
 	}
 
-	@RequestMapping(value = "url/", method = RequestMethod.POST)
+	@RequestMapping(value = "url", method = RequestMethod.POST)
 	@ResponseBody
 	public ApiWrapper createUrl(@RequestBody LongUrl Url) throws ParseException {
 		String returnUrl = urlService.createLongUrl(Url);
-		return new ApiWrapper(Collections.singletonMap("short-url", returnUrl));
+		return new ApiWrapper(Collections.singletonMap("short-url","http://shortUrl/="+returnUrl));
 	}
 
 	
-	@RequestMapping(value = "url/id", method = RequestMethod.GET/* , produces = MediaType.APPLICATION_JSON_VALUE */)
+	@RequestMapping(value = "url", method = RequestMethod.GET/* , produces = MediaType.APPLICATION_JSON_VALUE */)
 	@ResponseBody
 	public ApiWrapper getLongUrl(@RequestParam(required = true) String shortUrl) throws ProApiException {
 		String longUrlReturn = urlService.getLongUrl(shortUrl);

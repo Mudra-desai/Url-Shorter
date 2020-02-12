@@ -60,7 +60,7 @@ public class UrlService {
 		longUrl.setHash(hashObject);
 		longUrl = longUrlDao.save(longUrl);
 		ShortUrl shortUrl = new ShortUrl();
-		StringBuilder urlCreated = new StringBuilder(IDConverter.createID(longUrl.getId()));
+		StringBuilder urlCreated = new StringBuilder(IDConverter.shortUrlCreate(longUrl.getId()));
 		shortUrl.setShortUrl(urlCreated.toString());
 		shortUrl.setLongUrl(longUrl);
 		shortUrlDao.save(shortUrl);

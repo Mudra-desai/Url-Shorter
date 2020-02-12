@@ -56,7 +56,7 @@ public class IDConverter {
 	}
 
 	// get short_url from id after changing to base 63
-	public static String createID(long id) {
+	public static String shortUrlCreate(long id) {
 		List<Integer> baseID = changeBaseID(id);
 		StringBuilder uniqueID = new StringBuilder();
 		for (int digit : baseID) {
