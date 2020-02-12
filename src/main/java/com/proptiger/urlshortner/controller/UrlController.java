@@ -32,7 +32,7 @@ public class UrlController {
 	@ResponseBody
 	public ApiWrapper createUrl(@RequestBody LongUrl Url) throws ParseException {
 		String returnUrl = urlService.createLongUrl(Url);
-		return new ApiWrapper(Collections.singletonMap("short-url","http://shortUrl/="+returnUrl));
+		return new ApiWrapper(Collections.singletonMap("short-url","http://shortUrl/"+returnUrl));
 	}
 
 	
